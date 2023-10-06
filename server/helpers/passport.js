@@ -8,12 +8,12 @@ passport.use(
 
     // 404
     if (!user) {
-      return done(null, false, { message: "User is not found!" });
+      return done(null, false, "User is not found!");
     }
 
     // 403
     if (password !== user.password) {
-      return done(null, false, { message: "Invalid password!" });
+      return done(null, false, "Invalid password!");
     }
 
     // Success

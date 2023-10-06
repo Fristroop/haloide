@@ -11,29 +11,8 @@ router.get("/@me", isLoggedIn, (req, res) => {
   res.send(user);
 });
 
-// Kullanıcı girişi
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-
-    if (!user) {
-      return res.status(404).json({ message: info.message });
-    }
-
-    req.logIn(user, (err) => {
-      if (err) {
-        return next(err);
-      }
-      console.log(user);
-      return res.send(user);
-    });
-  })(req, res, next);
-});
-
 // Yeni kullanıcı kaydı
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   let { username, email, password } = req.body;
   username = username.toLowerCase();
 
