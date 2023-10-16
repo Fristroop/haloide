@@ -1,5 +1,8 @@
 import express from "express";
-import { isLoggedIn } from "../helpers/passport";
+import passport from "passport";
+
+import { isLoggedIn } from "../helpers/passport.js";
+import { userModel } from "../helpers/mongoose.js";
 
 const router = express.Router();
 export const UsersRouter = router;
@@ -11,8 +14,22 @@ router.get("/@me", isLoggedIn, (req, res) => {
   res.send(user);
 });
 
+// Kullanıcı Girişi
+router.post("/login", (req, res) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) return res.status(400).send(err);
+    if (!user) return res.status(400).send({ message: info.message });
+
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+      console.log(user);
+      return res.send(user);
+    });
+  })(req, res);
+});
+
 // Yeni kullanıcı kaydı
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
   let { username, email, password } = req.body;
   username = username.toLowerCase();
 
@@ -29,6 +46,7 @@ router.post("/", async (req, res) => {
   const newUser = await userModel.create({
     id: v4(),
     createdAt: Date.now(),
+    type: "user",
     username,
     email,
     password,

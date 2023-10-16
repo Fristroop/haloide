@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "halo-402109",
+  "private_key_id": "1609187220f8387701797024e7212d660c4d64eb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLPSc7hLLtGB2n\nuJfc9TmZOdESs6rlStBGkqK69uiOfGKXKdm9g1dPS4zYDGMtbqpEBqqAJ3rLgX37\nxoHVJBU+u/P+TIBF8kjXydiZSh5qZlXzgHPryCjOY1mtll6BUdyI1wXWMPeM6yun\nPKpZy/zuxZQRgKGp/sGs5guDrHYeYbcTSidPWVuTStNELIgBtk2nu/GXn3mOX1pR\nE0A3CXAf5YlH0mhNSj4n7FGO6hEGFD1MOjKmCrguv2ZY50n95m7F+1rML2ljMvx6\nR8eL4OcVgknvSJSrtl5g1q91xJ3W6hJEKqJ9T4k7/tQdIEAomu+Tcz+E6ZnsT/qm\n21nf+awzAgMBAAECggEABfcMBTuuUrYf/LG2x1XtNFmVkNJ0JBmvhjq8ivc/ORte\ne2hPizflIp8piZfHe2hhl/CIJY3DFWD+FRss6VgPRZGXpjGRnDvxtl+mu00JGn9Z\na3WsMVHlHLWexrEAohQIgH2rHq++PEUUuWpW557MlCd5YpAfbpFbFtuDoAA6UUbo\nh+MAsFp/Y3V8xI3hoXU6SbK1f3Q3gN3z362xgcKiRso94b9Hn2fL/JNfFXYqolpO\n/OVNszFF+lKTmdpSTSKGhHo5+zgVF3AJ5xrHG+uThZI2B9iCAzez3jFezUSXuLuM\nurKEQAUURPVsYJ8ubkiZyuOv+BC5YebICc076GAHWQKBgQDoOcb8zgeEQFcfnyeh\nBMwdZ41bVDlNXfjXxwJkauTLs0Vu3HuOjDZ9uSajdbH/qLN16R1hruzbuEWXtyEc\nIV4YH983tNhpJaKMaHbnRuYJRSSKtqiooCYPuq5/aaXpbmN7v0TfdvPVE841oYfE\n3PapcsDNYnwxoRnrag+Osqex2wKBgQDgC67gU4L8ZUS5S6D+O9GqxUXrFkC2l54+\nLgZR2uXAhD8frYfHXO/l6iqKpu1kJQWQ/g7UOf+PdQErq/dE5FdoSHK308mvDW9A\nvJ0kUapaszA3ZQFdAloPtgeUx1N6ATYSuffNd7UrM5wtnai2MVoh3J+y6oDpghbb\nllRzMIXaiQKBgBNpMO7UseAmGKI2BXP6GK2kiDZIFfoXjsNKiTKnlLRKKdWYbGN/\n6NYdcdNb9SLvkQCcGa6eloHPJ1IFJqlZSKovj9LyNNylHq8p1DaEwJmpw+IsXnCp\n4kSSUB+qTwnyBjLDzBf5s2vuGeB1vgmAhsWnJ+KDBuqHEsmQtfgxir7dAoGABlvO\nhsdX/FnTbX7b/tsrxDD9HwLuqz/6WcFspH4V7zTRpdCC/gGBPYE729uI+UKjuc28\nFgHfYu7rLZYf2nCwmmEUAGueWb2D3s57l0BKGXDkeW4Ab+dVLwT3ih1uHRRTuIxW\noBo5phQ85n6G/0S/Th642ZcWOYpbo7fMhchmxCECgYEAqSezpDXQi/dgvWbsi/sG\niIiH7/IaQ/+nbBtPv94GOnpJ3yJmu7CVBB2C8iDlV1d2UkxkeKOZb0gco1wcq7vW\nnQcmcSThajso0Sa5kVO+QBYd8x96mm3+LyrfkOIgujfvp/aOXP35835WTVoKoKmM\no18g+z+bSmFmWN1IqX57Wpw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "fristroop@halo-402109.iam.gserviceaccount.com",
+  "client_id": "105106390678753949991",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fristroop%40halo-402109.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

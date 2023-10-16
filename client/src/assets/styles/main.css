@@ -1,0 +1,54 @@
+a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 2560px) {
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  a {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  p {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  a {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  p {
+    font-size: .9rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  a {
+    font-size: .9rem;
+  }
+}

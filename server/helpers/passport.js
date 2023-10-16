@@ -4,7 +4,7 @@ import { userModel } from "./mongoose.js";
 
 passport.use(
   new Strategy(async (username, password, done) => {
-    const user = await userModel.findOne({ username });
+    const user = await userModel.findOne({ email: username });
 
     // 404
     if (!user) {
@@ -43,4 +43,12 @@ export const isLoggedIn = (req, res, next) => {
   }
 
   return res.sendStatus(401);
+};
+
+export const isAdmin = (req, res, next) => {
+  if (req.user && req.user.type === "admin") {
+    return next();
+  }
+
+  return res.sendStatus(403);
 };

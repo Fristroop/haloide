@@ -15,8 +15,34 @@ export const userModel = mongoose.model(
     id: { type: String, required: true, unique: true },
     email: { type: String, unique: true },
     username: { type: String, unique: true },
-    password: String,
+    password: { type: String },
+    type: { type: String },
     createdAt: { type: String },
     lastLogin: { type: Object },
+  })
+);
+
+// User Model
+export const catModel = mongoose.model(
+  "category",
+  new Schema({
+    id: { type: String, required: true, unique: true },
+    title: { type: String },
+    description: { type: String },
+    magazines: { type: [] },
+  })
+);
+
+// User Model
+export const magazineModel = mongoose.model(
+  "magazine",
+  new Schema({
+    id: { type: String, required: true, unique: true },
+    catId: { type: String },
+    title: { type: String },
+    description: { type: String },
+    banner: { type: String },
+    file: { type: String },
+    timestamp: { type: String },
   })
 );

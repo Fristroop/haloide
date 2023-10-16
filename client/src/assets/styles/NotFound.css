@@ -1,14 +1,14 @@
-.not-found {
+.app {
   height: 100vh;
   width: 100%;
   background-image: url("../imgs/space.png");
   background-size: cover;
 }
 
-.not-found .text {
+.app .text {
   text-shadow: 3px 3px black;
 }
 
-.not-found .big {
-  font-size: 10rem;
+.big {
+    font-size: 10rem;
 }
