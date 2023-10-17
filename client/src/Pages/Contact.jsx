@@ -15,10 +15,10 @@ export const Contact = () => {
           <div className="col-md-6">
             <h1 className="text-center">İletişim</h1>
             <h6 className="mb-4">
-                Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
-                Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
-                veya formu kullanarak mesaj gönderin.
-              </h6>
+              Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
+              Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
+              veya formu kullanarak mesaj gönderin.
+            </h6>
             <hr />
 
             <div className="mb-5"></div>
@@ -57,10 +57,18 @@ export const Contact = () => {
                   <label htmlFor="floatingInput">E-posta</label>
                 </div>
                 <div className="col-md-12 mb-3">
-                    <textarea className="form-control" name="message" cols="30" rows="5" required></textarea>
+                  <textarea
+                    className="form-control"
+                    name="message"
+                    cols="30"
+                    rows="5"
+                    required
+                  ></textarea>
                 </div>
                 <div className="col-md-12 mb-3">
-                    <button className="btn btn-success w-100" disabled>Gönder</button>
+                  <button className="btn btn-success w-100" disabled>
+                    Gönder
+                  </button>
                 </div>
               </form>
             </div>
