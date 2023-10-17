@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/imgs/halo-logo.png";
 
 export const Navbar = () => {
   useEffect(() => {
@@ -14,12 +15,7 @@ export const Navbar = () => {
       >
         <div className="container-fluid">
           <Link to="/" className="navbar-brand fw-bold fs-4">
-            <img
-              src="https://haloedebiyat.files.wordpress.com/2023/05/halo-logo.png"
-              width={"80px"}
-              className="me-3 logo"
-              alt="me-3"
-            />
+            <img src={logo} width={"80px"} className="me-3 logo" alt="me-3" />
           </Link>
           <div className="d-md-none">
             <button
