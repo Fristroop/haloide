@@ -6,8 +6,8 @@ await mongoose
   .then(() => console.log("Mongoose connection is successfull!"))
   .catch((err) => {
     throw new Error(err);
-  });
-
+  })
+  
 // User Model
 export const userModel = mongoose.model(
   "user",
