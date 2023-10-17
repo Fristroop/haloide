@@ -40,7 +40,7 @@ router.post("/", isAdmin, async (req, res) => {
 
   const cat = await catModel.findOne({ id: catId });
   cat.magazines.push(model.id);
-  await cat.save();
+  await cat.save(); 
 
   res.send(model);
 });
