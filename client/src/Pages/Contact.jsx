@@ -14,6 +14,11 @@ export const Contact = () => {
         <div className="d-flex justify-content-center">
           <div className="col-md-6">
             <h1 className="text-center">İletişim</h1>
+            <h6 className="mb-4">
+                Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
+                Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
+                veya formu kullanarak mesaj gönderin.
+              </h6>
             <hr />
 
             <div className="mb-5"></div>
@@ -29,11 +34,7 @@ export const Contact = () => {
             </div>
             <hr />
             <div className="my-5">
-              <h6 className="mb-4">
-                Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
-                Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
-                veya formu kullanarak mesaj gönderin.
-              </h6>
+              <h4 className="mb-3 text-center">İletişim formu</h4>
               <form action="" className="row g-3" onSubmit={submit}>
                 <div className="col-md-6 form-floating mb-3">
                   <input
@@ -59,7 +60,7 @@ export const Contact = () => {
                     <textarea className="form-control" name="message" cols="30" rows="5" required></textarea>
                 </div>
                 <div className="col-md-12 mb-3">
-                    <button className="btn btn-success w-100">Gönder</button>
+                    <button className="btn btn-success w-100" disabled>Gönder</button>
                 </div>
               </form>
             </div>

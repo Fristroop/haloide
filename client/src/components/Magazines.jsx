@@ -19,6 +19,7 @@ export const Magazines = ({ data }) => {
     });
     setDisBtn(false);
     console.log(res);
+    location.reload();
   };
 
   const deleteMag = async (id) => {
@@ -26,6 +27,7 @@ export const Magazines = ({ data }) => {
     if (!ok) return;
     const res = await axios.delete(API + "/magazines/" + id);
     console.log(res);
+    location.reload();
   };
 
   return (
@@ -182,7 +184,7 @@ export const Magazines = ({ data }) => {
                     name="file"
                   />
                 </div>
-                <button type="submit" className={`btn w-100 btn-success`}>
+                <button type="submit" className={`btn w-100 btn-success`} disabled={disBtn}>
                   {disBtn ? (
                     <div
                       className="spinner-border spinner-border-sm"

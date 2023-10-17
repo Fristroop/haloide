@@ -11,7 +11,9 @@ router.get("/", async (req, res) => {
   let models = await catModel.find().lean();
 
   for (const model of models) {
-    model.magazines = await magazineModel.find({ catId: model.id });
+    model.magazines = (
+      await magazineModel.find({ catId: model.id }).lean()
+    ).reverse();
   }
   res.send(models);
 });
@@ -40,7 +42,7 @@ router.delete("/:id", isAdmin, async (req, res) => {
   const model = await catModel.findOne({ id: req.params.id });
 
   if (!model) res.sendStatus(400);
-  
+
   if (model.magazines.length !== 0) {
     for (const mag of model.magazines) {
       await magazineModel.deleteOne({ id: mag.id });

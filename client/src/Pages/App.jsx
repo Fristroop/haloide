@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { MagazineModal } from "../components/MagazineModal";
 import axios from "axios";
 import { API } from "../config";
+import { Loader } from "./Loader";
 
 //${d.title.replace(/\s/g, "")}
 export const App = () => {
@@ -32,7 +33,7 @@ export const App = () => {
     fetch();
   }, []);
 
-  if (!data) return <>Loading...</>;
+  if (!data) return <Loader />;
 
   return (
     <>
@@ -54,7 +55,7 @@ export const App = () => {
         <div className="px-3 mb-3">
           {data.map((e, i) => (
             <div className="mb-5" key={i}>
-              <h3>{e.title}</h3>
+              <h3>{e.title} <small className="text-muted">({e.magazines.length})</small></h3>
               <hr className="border-3" />
               <div className="magazines d-flex overflow-auto gap-3">
                 {e.magazines.map((d, i) => (
