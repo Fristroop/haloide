@@ -10,7 +10,7 @@ export const MagazineModal = ({ show, onHide, modal }) => {
       <div className="modal-dialog" role="document">
         <div className="modal-content" style={{ backgroundColor: "" }}>
           <div className="modal-header">
-            <h4 className="modal-title  text-white fw-bold">{modal.title}</h4>
+            <h4 className="modal-title fw-bold">{modal.title}</h4>
             <button
               type="button"
               className="btn-close"
@@ -28,7 +28,7 @@ export const MagazineModal = ({ show, onHide, modal }) => {
               />
             </div>
             <div>
-              <p style={{ whiteSpace: "break-spaces" }}> {modal.description}</p>
+              <p className="magazine-desc" style={{ whiteSpace: "break-spaces" }}> {modal.description}</p>
             </div>
           </div>
           <div className="modal-footer">
@@ -47,9 +47,10 @@ export const MagazineModal = ({ show, onHide, modal }) => {
               href={modal.file}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-success w-100"
+              className="btn btn-success btn-lg w-100"
             >
-              Şimdi İndir ve Oku!
+              <i className="fa-solid fa-ghost me-2"></i>
+              Simdi Indir ve Oku!
             </a>
           </div>
         </div>

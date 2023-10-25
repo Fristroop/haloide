@@ -1,54 +1,34 @@
-a {
-  text-decoration: none;
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Lobster&display=swap");
+
+body {
+  font-family: "Creepster";
 }
 
-@media only screen and (max-width: 2560px) {
-
-  p {
-    font-size: 1.4rem;
-  }
-
-  h6 {
-    font-size: 1.25rem;
-  }
-
-  .logo {
-    width: 100px;
-  }
-
-  a {
-    font-size: 1.3rem;
-  }
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
-@media only screen and (max-width: 768px) {
-  p {
-    font-size: 1.2rem;
-  }
-
-  h6 {
-    font-size: 1.1rem;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  a {
-    font-size: 1.1rem;
-  }
+.navbar-toggler {
+  border: none;
+  color: var(--bs-navbar-brand-color);
 }
 
-@media only screen and (max-width: 425px) {
-  p {
-    font-size: .9rem;
-  }
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 
-  h6 {
-    font-size: 1rem;
-  }
+.ig {
+  font-family: "Lobster";
+}
 
-  a {
-    font-size: .9rem;
-  }
+.magazines:nth-last-child() {
+  background-color: red;
+}
+
+.logo {
+  mix-blend-mode: multiply;
 }

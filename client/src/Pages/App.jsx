@@ -8,6 +8,8 @@ import axios from "axios";
 import { API } from "../config";
 import { Loader } from "./Loader";
 
+//import bg from "../assets/imgs/hallowen.jpg";
+
 //${d.title.replace(/\s/g, "")}
 export const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -39,23 +41,28 @@ export const App = () => {
     <>
       <Navbar />
 
-      <div className="main container mt-5">
-        <div className="banner mb-3">
+      <main className="container">
+        <div className="banner my-3">
           <img
-            src="https://haloedebiyat.files.wordpress.com/2023/03/halo-e1682951997831.png"
+            src="https://images.hdqwalls.com/download/halloween-ghosts-ar-1920x1080.jpg"
             alt=""
             className="rounded"
           />
           <div className="title">
-            Halo: Aylık Fikir, Sanat ve Edebiyat Dergisi
-            <hr className="w-50 d-flex mx-auto" />
+            <div className="text-center pb-2 fs-1">
+              Halo: Aylık Fikir, Sanat ve Edebiyat Dergisi
+            </div>
           </div>
         </div>
 
-        <div className="px-3 mb-3">
+        <div className="my-5"></div>
+        <div>
           {data.map((e, i) => (
             <div className="mb-5" key={i}>
-              <h3>{e.title} <small className="text-muted">({e.magazines.length})</small></h3>
+              <h3>
+                {e.title}{" "}
+                <small className="text-muted">({e.magazines.length})</small>
+              </h3>
               <hr className="border-3" />
               <div className="magazines d-flex overflow-auto gap-3">
                 {e.magazines.map((d, i) => (
@@ -72,13 +79,15 @@ export const App = () => {
               </div>
             </div>
           ))}
-          <MagazineModal
-            show={showModal}
-            onHide={() => setShowModal(false)}
-            modal={modal}
-          />
         </div>
-      </div>
+      </main>
+
+      <MagazineModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        modal={modal}
+      />
+
       <Footer />
     </>
   );

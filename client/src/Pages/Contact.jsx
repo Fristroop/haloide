@@ -13,7 +13,7 @@ export const Contact = () => {
       <div className="container mt-5">
         <div className="d-flex justify-content-center">
           <div className="col-md-6">
-            <h1 className="text-center">İletişim</h1>
+            <h1 className="text-center">Iletisim</h1>
             <h6 className="mb-4">
               Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
               Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
@@ -25,7 +25,7 @@ export const Contact = () => {
             <div className="mb-5 d-flex justify-content-center gap-3     flex-wrap">
               <a
                 href="https://www.instagram.com/haloidergisi/"
-                className="btn fs-4"
+                className="btn fs-4 ig"
               >
                 <i className="fa-brands fa-instagram"></i>
                 <br />
@@ -34,7 +34,7 @@ export const Contact = () => {
             </div>
             <hr />
             <div className="my-5">
-              <h4 className="mb-3 text-center">İletişim formu</h4>
+              <h4 className="mb-3 text-center">Iletisim formu</h4>
               <form action="" className="row g-3" onSubmit={submit}>
                 <div className="col-md-6 form-floating mb-3">
                   <input

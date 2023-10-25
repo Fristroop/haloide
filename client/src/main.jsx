@@ -6,7 +6,7 @@ import { NotFound } from "./Pages/NotFound";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
 
-//import "./assets/styles/main.css"
+import "./assets/styles/main.css";
 import { Login } from "./Pages/Login";
 //import { Register } from "./Pages/Register";
 import { Dashboard } from "./Pages/Dashboard";
