@@ -28,7 +28,3 @@ body {
 .magazines:nth-last-child() {
   background-color: red;
 }
-
-.logo {
-  mix-blend-mode: multiply;
-}

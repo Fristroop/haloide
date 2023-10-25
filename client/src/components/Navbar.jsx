@@ -57,13 +57,13 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item col-6 col-md-auto">
                   <a href="/hakkimizda" className="nav-link">
-                    <i className="fa-solid fa-list-check me-2 d-md-none"></i>
+                    <i className="fa-solid fa-user-group me-2 d-md-none"></i>
                     Hakkımızda
                   </a>
                 </li>
                 <li className="nav-item col-6 col-md-auto">
                   <a href="/iletisim" className="nav-link">
-                    <i className="fa-solid fa-hand-holding-dollar me-2 d-md-none"></i>
+                    <i className="fa-solid fa-phone me-2 d-md-none"></i>
                     Iletisim
                   </a>
                 </li>
