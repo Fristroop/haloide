@@ -7,39 +7,55 @@ import { MagazineModal } from "../components/MagazineModal";
 import axios from "axios";
 import { API } from "../config";
 import { Loader } from "./Loader";
+import { Link, useLocation } from "react-router-dom";
 
 //import bg from "../assets/imgs/hallowen.jpg";
 
 //${d.title.replace(/\s/g, "")}
 export const App = () => {
+  const params = new URLSearchParams(useLocation().search);
+  const mId = params.get("mId");
+
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState({});
   const [data, setData] = useState(null);
 
-  const handleButtonClick = (modal) => {
-    setModal(modal);
-    setShowModal(true);
-  };
-
   useEffect(() => {
     const fetch = async () => {
+      if (data) return;
       try {
         const res = await axios.get(API + "/categories");
-        console.log(res);
         setData(res.data);
       } catch (error) {
         alert("Bir hata oluştu!");
         console.error(error);
       }
     };
+
     fetch();
-  }, []);
+
+    const handleUrlChange = () => {
+      if (!mId || !data) return setShowModal(false);
+      const magazine = data.reduce((acc, currCategory) => {
+        const foundMagazine = currCategory.magazines.find((m) => m.id === mId);
+        if (foundMagazine) {
+          return foundMagazine;
+        }
+        return acc;
+      }, null);
+
+      setModal(magazine);
+      setShowModal(true);
+    };
+
+    handleUrlChange();
+  }, [data, mId]);
 
   if (!data) return <Loader />;
 
   return (
     <>
-      <Navbar />
+      <Navbar data={data} />
 
       <main className="container">
         <div className="banner my-3">
@@ -67,13 +83,13 @@ export const App = () => {
               <div className="magazines d-flex overflow-auto gap-3">
                 {e.magazines.map((d, i) => (
                   <div key={i}>
-                    <button
-                      className="card p-0 border-0 text-bg-dark"
-                      onClick={() => handleButtonClick(d)}
+                    <Link
+                      className="btn card p-0 border-0"
+                      to={`/?mId=${d.id}`}
                     >
                       <img src={d.banner} className="card-img" alt="..." />
                       <h6 className="p-2">{d.title}</h6>
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -82,12 +98,7 @@ export const App = () => {
         </div>
       </main>
 
-      <MagazineModal
-        show={showModal}
-        onHide={() => setShowModal(false)}
-        modal={modal}
-      />
-
+      <MagazineModal show={showModal} modal={modal} />
       <Footer />
     </>
   );

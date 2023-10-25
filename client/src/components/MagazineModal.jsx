@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
-export const MagazineModal = ({ show, onHide, modal }) => {
+import { Link } from "react-router-dom";
+
+export const MagazineModal = ({ show, modal }) => {
   return (
     <div
       className={`modal fade ${show ? "show" : ""}`}
@@ -11,13 +13,7 @@ export const MagazineModal = ({ show, onHide, modal }) => {
         <div className="modal-content" style={{ backgroundColor: "" }}>
           <div className="modal-header">
             <h4 className="modal-title fw-bold">{modal.title}</h4>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              onClick={onHide}
-            ></button>
+            <Link className="btn-close" to={"/"}></Link>
           </div>
           <div className="modal-body">
             <div className="mb-3">
