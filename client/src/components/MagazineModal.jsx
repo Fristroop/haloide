@@ -21,14 +21,16 @@ export const MagazineModal = ({ show, onHide, modal }) => {
           </div>
           <div className="modal-body">
             <div className="mb-3">
-              <img
-                src={modal.banner}
-                className="w-100 rounded"
-                alt=""
-              />
+              <img src={modal.banner} className="w-100 rounded" alt="" />
             </div>
             <div>
-              <p className="magazine-desc" style={{ whiteSpace: "break-spaces" }}> {modal.description}</p>
+              <p
+                className="magazine-desc"
+                style={{ whiteSpace: "break-spaces" }}
+              >
+                {" "}
+                {modal.description}
+              </p>
             </div>
           </div>
           <div className="modal-footer">
@@ -52,6 +54,11 @@ export const MagazineModal = ({ show, onHide, modal }) => {
               <i className="fa-solid fa-ghost me-2"></i>
               Simdi Indir ve Oku!
             </a>
+            <p className="text-danger magazine-desc">
+              <i className="fa-solid fa-warning me-1"></i>
+              Butona bastığınızda yeni bir sayfaya yönlendireleceksiniz ve
+              indirme otomatik başlayacak.
+            </p>
           </div>
         </div>
       </div>
