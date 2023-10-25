@@ -4,6 +4,14 @@ import { Navbar } from "../components/Navbar";
 export const Contact = () => {
   const submit = (e) => {
     e.preventDefault();
+
+    const data = new FormData(e.target);
+
+    window.open(
+      `mailto:haloidergisipau@gmail.com?subject=${data.get(
+        "subject"
+      )}&body=${data.get("body")}`
+    );
   };
 
   return (
@@ -14,15 +22,15 @@ export const Contact = () => {
         <div className="d-flex justify-content-center">
           <div className="col-md-6">
             <h1 className="text-center">Iletisim</h1>
-            <h6 className="mb-4">
+            <h6 className="mb-4 magazine-desc">
               Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
               Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
-              veya formu kullanarak mesaj gönderin.
+              veya formu kullanarak mail gönderin.
             </h6>
             <hr />
 
             <div className="mb-5"></div>
-            <div className="mb-5 d-flex justify-content-center gap-3     flex-wrap">
+            <div className="mb-5 d-flex justify-content-center gap-3 flex-wrap">
               <a
                 href="https://www.instagram.com/haloidergisi/"
                 className="btn fs-4 ig"
@@ -31,42 +39,40 @@ export const Contact = () => {
                 <br />
                 <div className="fs-6">@haloidergisi</div>
               </a>
+              <a
+                href="mailto:haloidergisipau@gmail.com"
+                className="btn fs-4 ig"
+              >
+                <i className="fa-solid fa-envelope"></i>
+                <br />
+                <div className="fs-6">halo ide</div>
+              </a>
             </div>
             <hr />
-            <div className="my-5">
-              <h4 className="mb-3 text-center">Iletisim formu</h4>
+            <div className="my-5 magazine-desc">
+              <h4 className="mb-3 text-center">İletişim formu</h4>
               <form action="" className="row g-3" onSubmit={submit}>
-                <div className="col-md-6 form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="name"
-                    placeholder="null"
-                    required
-                  />
-                  <label htmlFor="floatingInput">İsim</label>
-                </div>
-                <div className="col-md-6 form-floating mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    name="email"
-                    placeholder="null"
-                    required
-                  />
-                  <label htmlFor="floatingInput">E-posta</label>
+                <div className="col-12 mb-3">
+                  <label htmlFor="">Konu</label>
+                  <select name="subject" id="" className="form-control">
+                    <option>Bir önerim var</option>
+                    <option>Hata bildirmek istiyorum</option>
+                    <option>Farklı bir konu</option>
+                  </select>
                 </div>
                 <div className="col-md-12 mb-3">
+                  <label htmlFor="">Mesajınız</label>
                   <textarea
                     className="form-control"
-                    name="message"
+                    name="body"
                     cols="30"
                     rows="5"
                     required
+                    minLength={30}
                   ></textarea>
                 </div>
                 <div className="col-md-12 mb-3">
-                  <button className="btn btn-success w-100" disabled>
+                  <button type="submit" className="btn btn-success w-100">
                     Gönder
                   </button>
                 </div>
