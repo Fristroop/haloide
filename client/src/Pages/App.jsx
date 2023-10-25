@@ -43,7 +43,7 @@ export const App = () => {
         }
         return acc;
       }, null);
-
+      if(!magazine) return;
       setModal(magazine);
       setShowModal(true);
     };
