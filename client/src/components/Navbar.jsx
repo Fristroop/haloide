@@ -4,6 +4,8 @@ import logo from "../assets/imgs/halo-logo.png";
 import { SearchModal } from "./SearchModal";
 
 export const Navbar = ({ data }) => {
+  const searchVisible = location.pathname == "/";
+
   useEffect(() => {
     const navbar = document.getElementById("navbar");
     if (navbar) document.body.style.paddingTop = `${navbar.offsetHeight}px`;
@@ -18,7 +20,9 @@ export const Navbar = ({ data }) => {
 
           <div className="d-flex">
             <button
-              className="btn d-md-none"
+              className={`btn d-md-none ${
+                searchVisible ? "d-block" : "d-none"
+              }`}
               data-bs-toggle="modal"
               data-bs-target="#searchModal"
             >
@@ -77,7 +81,11 @@ export const Navbar = ({ data }) => {
                   </a>
                 </li>
 
-                <div className="d-none d-md-flex mx-auto align-items-center">
+                <div
+                  className={`d-none ${
+                    searchVisible ? "d-md-flex" : ""
+                  } mx-auto align-items-center`}
+                >
                   <button
                     className="btn btn-dark d-flex align-items-center input-group magazine-desc"
                     data-bs-toggle="modal"
