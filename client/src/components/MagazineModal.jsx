@@ -24,21 +24,17 @@ export const MagazineModal = ({ show, modal }) => {
                 className="magazine-desc"
                 style={{ whiteSpace: "break-spaces" }}
               >
-                {" "}
                 {modal.description}
               </p>
             </div>
           </div>
           <div className="modal-footer">
-            <div className="d-none justify-content-between mb-3">
-              <button className="btn">
+            <div className="justify-content-between mb-3">
+              <button
+                className="btn"
+                onClick={() => navigator.clipboard.writeText(location.href) && alert("Copied share link!")}
+              >
                 <i className="fa-solid fa-share fs-5 me-1"></i>
-              </button>
-              <button className="btn">
-                <i className="fa-solid fa-comment fs-5 me-1"></i>0
-              </button>
-              <button className="btn">
-                <i className="fa-solid fa-thumbs-up fs-5 me-1"></i>0
               </button>
             </div>
             <a
