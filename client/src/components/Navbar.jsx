@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import logo from "../assets/imgs/halo-logo.png";
-import { SearchModal } from "./SearchModal";
 
-export const Navbar = ({ data }) => {
+export const Navbar = () => {
   const searchVisible = location.pathname == "/";
 
   useEffect(() => {
@@ -61,7 +60,7 @@ export const Navbar = ({ data }) => {
             </div>
 
             <div className="offcanvas-body">
-              <ul className="navbar-nav align-items-center flex-row flex-wrap flex-grow-1 mb-auto ms-md-auto">
+              <ul className="navbar-nav align-items-center flex-row flex-wrap flex-grow-1 ms-md-auto">
                 <li className="nav-item col-6 col-md-auto">
                   <a href="/" className="nav-link">
                     <i className="fa-solid fa-share-from-square me-2 d-md-none"></i>
@@ -114,8 +113,6 @@ export const Navbar = ({ data }) => {
           </div>
         </div>
       </nav>
-
-      <SearchModal data={data} />
     </>
   );
 };

@@ -8,6 +8,7 @@ import axios from "axios";
 import { API } from "../config";
 import { Loader } from "./Loader";
 import { Link, useLocation } from "react-router-dom";
+import { SearchModal } from "../components/SearchModal";
 
 //import bg from "../assets/imgs/hallowen.jpg";
 
@@ -43,12 +44,17 @@ export const App = () => {
         }
         return acc;
       }, null);
-      if(!magazine) return;
+      if (!magazine) return;
       setModal(magazine);
       setShowModal(true);
     };
 
     handleUrlChange();
+
+    const myModal = document.getElementById("trModal");
+    if (myModal) {
+      myModal.classList.add("show");
+    }
   }, [data, mId]);
 
   if (!data) return <Loader />;
@@ -56,6 +62,7 @@ export const App = () => {
   return (
     <>
       <Navbar data={data} />
+      <SearchModal data={data} />
 
       <main className="container">
         <div className="banner my-3">
