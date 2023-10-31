@@ -1,23 +1,18 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const SearchModal = ({ data = [] }) => {
-  const allMagazines = [];
   const [magazines, setMagazines] = useState([]);
 
-  for (const cat of data) {
-    for (const m of cat.magazines) {
-      allMagazines.push(m);
-    }
-  }
+  useEffect(() => {
+    setMagazines(data);
+  }, [data]);
 
   const handleSearch = (e) => {
     const val = e.target.value.toLowerCase();
-    const found = allMagazines.filter((a) =>
-      a.title.toLowerCase().includes(val)
-    );
+    const found = data.filter((a) => a.title.toLowerCase().includes(val));
     setMagazines(found);
   };
 
@@ -56,15 +51,16 @@ export const SearchModal = ({ data = [] }) => {
               </div>
 
               <ul className="list-group">
-                {magazines.map((m, i) => (
-                  <Link
-                    key={i}
-                    to={`/?mId=${m.id}`}
-                    className=" list-group-item list-group-item-action"
-                  >
-                    {m.title}
-                  </Link>
-                ))}
+                {(magazines.length > 0 &&
+                  magazines.map((m, i) => (
+                    <Link
+                      key={i}
+                      to={`/?mId=${m.id}`}
+                      className="list-group-item list-group-item-action"
+                    >
+                      {m.title}
+                    </Link>
+                  ))) || <div>Uygun sonuç bulunamadı!</div>}
               </ul>
             </div>
           </div>

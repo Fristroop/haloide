@@ -18,11 +18,11 @@ export const Contact = () => {
     <div>
       <Navbar />
 
-      <div className="container mt-5">
+      <div className="container mt-5 normal">
         <div className="d-flex justify-content-center">
           <div className="col-md-6">
-            <h1 className="text-center">Iletisim</h1>
-            <h6 className="mb-4 magazine-desc">
+            <h1 className="text-center">İletişim</h1>
+            <h6 className="mb-4">
               Bir sorunuz ya da öneriniz mi var? Bizimle iletişime geçin!
               Aşağıdaki iletişim bilgilerini kullanarak çekinmeden bize ulaşın
               veya formu kullanarak mail gönderin.
@@ -49,7 +49,7 @@ export const Contact = () => {
               </a>
             </div>
             <hr />
-            <div className="my-5 magazine-desc">
+            <div className="my-5 normal">
               <h4 className="mb-3 text-center">İletişim formu</h4>
               <form action="" className="row g-3" onSubmit={submit}>
                 <div className="col-12 mb-3">

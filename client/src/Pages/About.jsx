@@ -6,7 +6,7 @@ export const About = () => {
     <>
       <Navbar />
 
-      <div className="container about">
+      <div className="container about normal">
         <div className="d-flex justify-content-center mt-5">
           <div className="col-md-6">
             <h1 className="text-center">Hakkımızda</h1>

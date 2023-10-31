@@ -1,18 +1,20 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import axios from "axios";
 import { useEffect, useState } from "react";
-import "../assets/styles/App.css";
+import { API } from "../config";
+import { Link, useLocation } from "react-router-dom";
+
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { MagazineModal } from "../components/MagazineModal";
-import axios from "axios";
-import { API } from "../config";
-import { Loader } from "./Loader";
-import { Link, useLocation } from "react-router-dom";
 import { SearchModal } from "../components/SearchModal";
 
+import { Loader } from "./Loader";
+
+import "../assets/styles/App.css";
 //import bg from "../assets/imgs/hallowen.jpg";
 
-//${d.title.replace(/\s/g, "")}
 export const App = () => {
   const params = new URLSearchParams(useLocation().search);
   const mId = params.get("mId");
@@ -20,13 +22,24 @@ export const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState({});
   const [data, setData] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [magazines, setMagazines] = useState(null);
 
   useEffect(() => {
     const fetch = async () => {
       if (data) return;
       try {
-        const res = await axios.get(API + "/categories");
-        setData(res.data);
+        let cats = (await axios.get(API + "/categories")).data;
+        let mags = (await axios.get(API + "/magazines")).data;
+
+        setCategories(cats);
+        setMagazines(mags);
+
+        for (const cat of cats) {
+          cat.magazines = mags.filter((m) => m.catId == cat.id);
+        }
+
+        setData(cats);
       } catch (error) {
         alert("Bir hata oluştu!");
         console.error(error);
@@ -61,8 +74,8 @@ export const App = () => {
 
   return (
     <>
-      <Navbar data={data} />
-      <SearchModal data={data} />
+      <Navbar />
+      <SearchModal data={magazines} />
 
       <main className="container">
         <div className="banner my-3">

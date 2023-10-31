@@ -20,10 +20,7 @@ export const MagazineModal = ({ show, modal }) => {
               <img src={modal.banner} className="w-100 rounded" alt="" />
             </div>
             <div>
-              <p
-                className="magazine-desc"
-                style={{ whiteSpace: "break-spaces" }}
-              >
+              <p className="normal" style={{ whiteSpace: "break-spaces" }}>
                 {modal.description}
               </p>
             </div>
@@ -32,7 +29,10 @@ export const MagazineModal = ({ show, modal }) => {
             <div className="justify-content-between mb-3">
               <button
                 className="btn"
-                onClick={() => navigator.clipboard.writeText(location.href) && alert("Copied share link!")}
+                onClick={() =>
+                  navigator.clipboard.writeText(location.href) &&
+                  alert("Copied share link!")
+                }
               >
                 <i className="fa-solid fa-share fs-5 me-1"></i>
               </button>
@@ -46,7 +46,7 @@ export const MagazineModal = ({ show, modal }) => {
               <i className="fa-solid fa-ghost me-2"></i>
               Simdi Indir ve Oku!
             </a>
-            <p className="text-danger magazine-desc">
+            <p className="text-danger normal">
               <i className="fa-solid fa-warning me-1"></i>
               Butona bastığınızda yeni bir sayfaya yönlendireleceksiniz ve
               indirme otomatik başlayacak.

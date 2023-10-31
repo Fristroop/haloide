@@ -54,7 +54,7 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      <div className="container px-4">
+      <div className="container mb-5">
         <div className="row gap-5">
           <Magazines data={data} />
           <Categories data={data} />
