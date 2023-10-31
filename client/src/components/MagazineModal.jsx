@@ -39,9 +39,7 @@ export const MagazineModal = ({ show, modal }) => {
             </div>
             <a
               href={modal.file}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-success btn-lg w-100"
+              className="btn btn-success btn-lg w-100" download
             >
               <i className="fa-solid fa-ghost me-2"></i>
               Simdi Indir ve Oku!
