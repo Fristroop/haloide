@@ -19,7 +19,7 @@ export const SearchModal = ({ data = [] }) => {
   return (
     <>
       <div
-        className="modal fade magazine-desc"
+        className="modal fade normal"
         id="searchModal"
         tabIndex="-1"
         aria-hidden="true"

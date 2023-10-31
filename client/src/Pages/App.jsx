@@ -36,7 +36,7 @@ export const App = () => {
         setMagazines(mags);
 
         for (const cat of cats) {
-          cat.magazines = mags.filter((m) => m.catId == cat.id);
+          cat.magazines = mags.filter((m) => m.catId == cat.id).reverse();
         }
 
         setData(cats);
