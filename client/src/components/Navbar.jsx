@@ -90,7 +90,7 @@ export const Navbar = () => {
                   } mx-auto align-items-center`}
                 >
                   <button
-                    className="btn btn-outline-info d-flex align-items-center input-group"
+                    className="btn btn-outline-primary d-flex align-items-center input-group"
                     data-bs-toggle="modal"
                     data-bs-target="#searchModal"
                   >
