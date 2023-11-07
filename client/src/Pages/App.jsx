@@ -1,9 +1,10 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { API } from "../config";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API } from "../config";
 import { Link, useLocation } from "react-router-dom";
+import Aos from "aos";
 
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
@@ -13,7 +14,7 @@ import { SearchModal } from "../components/SearchModal";
 import { Loader } from "./Loader";
 
 import "../assets/styles/App.css";
-//import bg from "../assets/imgs/hallowen.jpg";
+import { Theme } from "../components/Theme";
 
 export const App = () => {
   const params = new URLSearchParams(useLocation().search);
@@ -22,10 +23,13 @@ export const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [modal, setModal] = useState({});
   const [data, setData] = useState(null);
-  const [categories, setCategories] = useState(null);
+  const [, setCategories] = useState(null);
   const [magazines, setMagazines] = useState(null);
 
   useEffect(() => {
+    Aos.init({
+      delay: 500,
+    });
     const fetch = async () => {
       if (data) return;
       try {
@@ -74,6 +78,7 @@ export const App = () => {
 
   return (
     <>
+      <Theme />
       <Navbar />
       <SearchModal data={magazines} />
 
@@ -84,9 +89,9 @@ export const App = () => {
             alt=""
             className="rounded"
           />
-          <div className="title">
+          <div className="title" data-aos="fade-up" data-aos-delay="1000">
             <div className="text-center pb-2 fs-1">
-              Halo: Aylık Fikir, Sanat ve Edebiyat Dergisi
+              HALO: Aylık Fikir, Sanat ve Edebiyat Dergisi
             </div>
           </div>
         </div>
@@ -95,17 +100,18 @@ export const App = () => {
         <div>
           {data.map((e, i) => (
             <div className="mb-5" key={i}>
-              <h3>
+              <h3 data-aos="fade-left">
                 {e.title}{" "}
                 <small className="text-muted">({e.magazines.length})</small>
               </h3>
               <hr className="border-3" />
-              <div className="magazines d-flex overflow-auto gap-3">
+              <div className="magazines d-flex gap-3">
                 {e.magazines.map((d, i) => (
                   <div key={i}>
                     <Link
-                      className="btn card p-0 border-0"
+                      className="btn card bg-transparent p-0 border-0"
                       to={`/?mId=${d.id}`}
+                      data-aos="fade-up"
                     >
                       <img src={d.banner} className="card-img" alt="..." />
                       <h6 className="p-2">{d.title}</h6>

@@ -1,8 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Lobster&display=swap");
+// Import all of Bootstrap's CSS
+
+@import "bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+}
 
 body {
-  font-family: "Creepster";
-  /*font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;*/
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
@@ -24,8 +30,4 @@ body {
 
 .ig {
   font-family: "Lobster";
-}
-
-.normal {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -50,7 +50,7 @@ export const SearchModal = ({ data = [] }) => {
                 />
               </div>
 
-              <ul className="list-group">
+              <ul className="list-group table-striped">
                 {(magazines.length > 0 &&
                   magazines.map((m, i) => (
                     <Link

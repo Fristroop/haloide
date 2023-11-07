@@ -1,5 +1,4 @@
 import axios from "axios";
-import "../assets/styles/Login.css";
 import { API } from "../config";
 
 export const Login = () => {

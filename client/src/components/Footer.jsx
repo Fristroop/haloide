@@ -1,18 +1,18 @@
+import darkLogo from "../assets/imgs/halo-dark.png";
+import lightLogo from "../assets/imgs/halo-light.png";
+
 export const Footer = () => {
+  const logo = localStorage.getItem("theme") === "dark" ? darkLogo : lightLogo;
+
   return (
     <>
-      <footer className="bg-dark-subtle border-top rounded-top p-4">
-        <div className="d-flex justify-content-between align-items-center gap-5">
+      <footer className="border-top p-4">
+        <div className="d-flex flex-wrap justify-content-between align-items-center gap-1 ">
           <div>
-            <img
-              src="https://haloedebiyat.files.wordpress.com/2023/05/halo-logo.png"
-              width={"70px"}
-              className=""
-              alt="me-3"
-            />
+            <img src={logo} width={"100px"} className="" alt="me-3" />
           </div>
           <div>
-            <h6>© 2023 Halo Edebiyat Dergisi</h6>
+            <h6>© 2023 HALO Edebiyat Dergisi</h6>
           </div>
         </div>
       </footer>

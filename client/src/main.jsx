@@ -6,12 +6,19 @@ import { NotFound } from "./Pages/NotFound";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
 
-import "./assets/styles/main.css";
+// Dashboard
 import { Login } from "./Pages/Login";
 //import { Register } from "./Pages/Register";
 import { Dashboard } from "./Pages/Dashboard";
 
-document.body.setAttribute("data-bs-theme", "dark");
+import "bootstrap";
+import "./assets/bootstrap.scss";
+import "aos/dist/aos.css";
+
+document.body.setAttribute(
+  "data-bs-theme",
+  localStorage.getItem("theme") || "dark"
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>

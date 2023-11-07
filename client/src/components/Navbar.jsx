@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import logo from "../assets/imgs/halo-logo.png";
+import darkLogo from "../assets/imgs/halo-dark.png";
+import lightLogo from "../assets/imgs/halo-light.png";
 
 export const Navbar = () => {
   const searchVisible = location.pathname == "/";
@@ -9,12 +10,14 @@ export const Navbar = () => {
     const navbar = document.getElementById("navbar");
     if (navbar) document.body.style.paddingTop = `${navbar.offsetHeight}px`;
   }, []);
+
+  const logo = localStorage.getItem("theme") === "dark" ? darkLogo : lightLogo;
   return (
     <>
-      <nav id="navbar" className="navbar navbar-expand-md bg-dark-subtle">
+      <nav id="navbar" className="navbar navbar-expand-md border-bottom p-0">
         <div className="container-fluid">
           <a href={"/"} className="navbar-brand d-flex align-items-center">
-            <img src={logo} alt="Logo" height="50" className="logo" />
+            <img src={logo} alt="Logo" height="80" className="logo" />
           </a>
 
           <div className="d-flex">
@@ -27,6 +30,7 @@ export const Navbar = () => {
             >
               <i className="fa-solid fa-search"></i>
             </button>
+
             <button
               className="navbar-toggler"
               type="button"
@@ -47,7 +51,7 @@ export const Navbar = () => {
           >
             <div className="offcanvas-header border-bottom">
               <a href={"/"} className="navbar-brand d-flex align-items-center">
-                <img src={logo} alt="Logo" height="50" className="logo mx-1" />
+                <img src={logo} alt="Logo" height="80" className="logo mx-1" />
               </a>
               <button
                 type="button"
@@ -76,7 +80,7 @@ export const Navbar = () => {
                 <li className="nav-item col-6 col-md-auto">
                   <a href="/iletisim" className="nav-link">
                     <i className="fa-solid fa-phone me-2 d-md-none"></i>
-                    Iletisim
+                    İletişim
                   </a>
                 </li>
 
@@ -86,7 +90,7 @@ export const Navbar = () => {
                   } mx-auto align-items-center`}
                 >
                   <button
-                    className="btn btn-dark d-flex align-items-center input-group magazine-desc"
+                    className="btn btn-outline-info d-flex align-items-center input-group"
                     data-bs-toggle="modal"
                     data-bs-target="#searchModal"
                   >

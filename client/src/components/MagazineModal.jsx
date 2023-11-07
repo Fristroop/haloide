@@ -13,7 +13,19 @@ export const MagazineModal = ({ show, modal }) => {
         <div className="modal-content" style={{ backgroundColor: "" }}>
           <div className="modal-header">
             <h4 className="modal-title fw-bold">{modal.title}</h4>
-            <Link className="btn-close" to={"/"}></Link>
+            <div className="d-flex align-items-center gap-3">
+              <button
+                className="btn btn-outline-primary d-flex align-items-center"
+                onClick={() =>
+                  navigator.clipboard.writeText(location.href) &&
+                  alert("Copied share link!")
+                }
+              >
+                <i className="fa-solid fa-share-from-square fs-5 me-2"></i>
+                Paylaş
+              </button>
+              <Link className="btn-close" to={"/"}></Link>
+            </div>
           </div>
           <div className="modal-body">
             <div className="mb-3">
@@ -26,30 +38,19 @@ export const MagazineModal = ({ show, modal }) => {
             </div>
           </div>
           <div className="modal-footer">
-            <div className="justify-content-between mb-3">
-              <button
-                className="btn"
-                onClick={() =>
-                  navigator.clipboard.writeText(location.href) &&
-                  alert("Copied share link!")
-                }
-              >
-                <i className="fa-solid fa-share fs-5 me-1"></i>
-              </button>
-            </div>
+            <div className="justify-content-between mb-3"></div>
             <a
               href={modal.file}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-success btn-lg w-100"
+              className="btn btn-success w-100"
             >
-              <i className="fa-solid fa-ghost me-2"></i>
-              Simdi Indir ve Oku!
+              Dergiyi İndir
             </a>
             <p className="text-danger normal">
               <i className="fa-solid fa-warning me-1"></i>
               Butona bastığınızda yeni bir sayfaya yönlendireleceksiniz ve
-              indirme otomatik başlayacak.
+              indirme otomatik olarak başlayacak.
             </p>
           </div>
         </div>

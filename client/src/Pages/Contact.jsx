@@ -1,5 +1,6 @@
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import { Theme } from "../components/Theme";
 
 export const Contact = () => {
   const submit = (e) => {
@@ -16,6 +17,7 @@ export const Contact = () => {
 
   return (
     <div>
+      <Theme />
       <Navbar />
 
       <div className="container mt-5 normal">

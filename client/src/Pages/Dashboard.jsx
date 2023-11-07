@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { API } from "../config";
 import { Magazines } from "../components/Magazines";
 import { Categories } from "../components/Categories";
+import { Theme } from "../components/Theme";
 
 export const Dashboard = () => {
   const [user, setUser] = useState({});
@@ -41,6 +42,7 @@ export const Dashboard = () => {
 
   return (
     <div>
+      <Theme />
       <div className="d-flex justify-content-between p-3 bg-dark-subtle border-bottom mb-3">
         <div className="d-flex align-items-center">
           <a href="/dashboard" className="fs-5 mt-1">

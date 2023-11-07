@@ -1,9 +1,11 @@
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import { Theme } from "../components/Theme";
 
 export const About = () => {
   return (
     <>
+      <Theme />
       <Navbar />
 
       <div className="container about normal">
