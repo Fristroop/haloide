@@ -100,7 +100,7 @@ export const App = () => {
         <div>
           {data.map((e, i) => (
             <div className="mb-5" key={i}>
-              <h3 data-aos="fade-left">
+              <h3 data-aos="zoom-in-left">
                 {e.title}{" "}
                 <small className="text-muted">({e.magazines.length})</small>
               </h3>
