@@ -83,7 +83,7 @@ export const App = () => {
       <SearchModal data={magazines} />
 
       <main className="container">
-        <div className="banner my-3">
+        <div className="banner my-5">
           <img
             src="https://images.hdqwalls.com/download/halloween-ghosts-ar-1920x1080.jpg"
             alt=""
@@ -99,7 +99,7 @@ export const App = () => {
         <div className="my-5"></div>
         <div>
           {data.map((e, i) => (
-            <div className="mb-5" key={i}>
+            <div className="my-5" key={i}>
               <h3 data-aos="zoom-in">
                 {e.title}{" "}
                 <small className="text-muted">({e.magazines.length})</small>
