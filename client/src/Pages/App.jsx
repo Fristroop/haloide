@@ -119,7 +119,6 @@ export const App = () => {
                     <Link
                       className="btn card bg-transparent p-0 border-0"
                       to={`/?mId=${d.id}`}
-                      data-aos="animate__fadeInUp"
                     >
                       <img
                         src={CDN + d.thumbnail}

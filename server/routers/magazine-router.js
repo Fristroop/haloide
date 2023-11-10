@@ -6,7 +6,7 @@ import { catModel, magazineModel } from "../helpers/mongoose.js";
 import { isAdmin } from "../helpers/passport.js";
 
 // Storage
-import { storage } from "../index.js";
+import { storage, uploadFile } from "../index.js";
 import { DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const router = express.Router();
@@ -30,22 +30,8 @@ router.post("/", isAdmin, async (req, res) => {
   if (!banner || !pdf)
     return res.status(400).send({ message: "Missing Files" });
 
-  const g_banner = new PutObjectCommand({
-    Bucket: "fristroop",
-    Body: banner.path,
-    Key: `halodergisi/thumbnails/${banner.filename}`,
-  });
-
-  const g_pdf = new PutObjectCommand({
-    Bucket: "fristroop",
-    Body: pdf.path,
-    Key: `halodergisi/dergiler/${pdf.filename}`,
-  });
-
-  let rep = await storage.send(g_banner);
-  console.log(rep);
-  rep = await storage.send(g_pdf);
-  console.log(rep);
+  const cmd_banner = await uploadFile("thumbnails", banner);
+  const cmd_pdf = await uploadFile("dergiler", pdf);
 
   const model = await magazineModel.create({
     id: v4(),
@@ -53,8 +39,8 @@ router.post("/", isAdmin, async (req, res) => {
     description,
     catId,
     timestamp: Date.now(),
-    thumbnail: g_banner.input.Key,
-    file: g_pdf.input.Key,
+    thumbnail: cmd_banner.input.Key,
+    file: cmd_pdf.input.Key,
   });
 
   const cat = await catModel.findOne({ id: catId });
@@ -106,6 +92,7 @@ router.put("/:id", isAdmin, async (req, res) => {
     data.thumbnail = g_banner.input.Key;
     fs.unlinkSync(banner.path);
   }
+
   const pdf = req.files.find((f) => f.fieldname === "file");
   if (pdf) {
     const g_pdf = new PutObjectCommand({

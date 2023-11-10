@@ -3,7 +3,7 @@ import "dotenv/config.js";
 //import "./helpers/passport.js";
 import "./server.js";
 
-import { S3 } from "@aws-sdk/client-s3";
+import { PutObjectCommand, S3 } from "@aws-sdk/client-s3";
 
 export const storage = new S3({
   region: "auto",
@@ -13,3 +13,16 @@ export const storage = new S3({
     secretAccessKey: process.env.r2AccessKey,
   },
 });
+
+export const uploadFile = async (dest, file) => {
+  const command = new PutObjectCommand({
+    Bucket: "fristroop",
+    Body: file.path,
+    Key: `halodergisi/${dest}/${file.filename}`,
+    ContentType: file.mimetype,
+  });
+
+  await storage.send(command);
+
+  return command;
+};
