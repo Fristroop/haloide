@@ -6,8 +6,7 @@ import { catModel, magazineModel } from "../helpers/mongoose.js";
 import { isAdmin } from "../helpers/passport.js";
 
 // Storage
-import { storage, uploadFile } from "../index.js";
-import { DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { deleteFile, uploadFile } from "../helpers/storage.js";
 
 const router = express.Router();
 export const MagazineRouter = router;
@@ -39,8 +38,8 @@ router.post("/", isAdmin, async (req, res) => {
     description,
     catId,
     timestamp: Date.now(),
-    thumbnail: cmd_banner.input.Key,
-    file: cmd_pdf.input.Key,
+    thumbnail: cmd_banner,
+    file: cmd_pdf,
   });
 
   const cat = await catModel.findOne({ id: catId });
@@ -58,18 +57,8 @@ router.delete("/:id", isAdmin, async (req, res) => {
 
   if (!model) res.sendStatus(400);
 
-  const thumbnail = new DeleteObjectCommand({
-    Bucket: "fristroop",
-    Key: model.thumbnail,
-  });
-
-  const pdf = new DeleteObjectCommand({
-    Bucket: "fristroop",
-    Key: model.file,
-  });
-
-  await storage.send(thumbnail);
-  await storage.send(pdf);
+  await deleteFile(model.thumbnail);
+  await deleteFile(model.file);
 
   await model.deleteOne();
 
@@ -82,28 +71,13 @@ router.put("/:id", isAdmin, async (req, res) => {
 
   const banner = req.files.find((f) => f.fieldname === "banner");
   if (banner) {
-    const g_banner = new PutObjectCommand({
-      Bucket: "fristroop",
-      Body: banner.path,
-      Key: `halodergisi/thumbnails/${banner.filename}`,
-    });
-
-    await storage.send(g_banner);
-    data.thumbnail = g_banner.input.Key;
+    data.thumbnail = await uploadFile("thumbnails", banner);
     fs.unlinkSync(banner.path);
   }
 
   const pdf = req.files.find((f) => f.fieldname === "file");
   if (pdf) {
-    const g_pdf = new PutObjectCommand({
-      Bucket: "fristroop",
-      Body: pdf.path,
-      Key: `halodergisi/dergiler/${pdf.filename}`,
-    });
-    await storage.send(g_pdf);
-
-    data.file = g_pdf.input.Key;
-
+    data.file = await uploadFile("dergiler", pdf);
     fs.unlinkSync(pdf.path);
   }
 
