@@ -3,9 +3,13 @@ import "dotenv/config.js";
 //import "./helpers/passport.js";
 import "./server.js";
 
+import { S3 } from "@aws-sdk/client-s3";
 
-import { Storage } from "@google-cloud/storage";
-
-export const storage = new Storage({
-    keyFilename: "halo-402109-1609187220f8.json"
-})
+export const storage = new S3({
+  region: "auto",
+  endpoint: "https://a106de41cb17fee9c2fb9aed6e4d952a.r2.cloudflarestorage.com",
+  credentials: {
+    accessKeyId: "c51b56cc81ed9f2f87340c9afccf7313",
+    secretAccessKey: process.env.r2AccessKey,
+  },
+});

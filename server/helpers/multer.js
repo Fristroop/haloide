@@ -8,7 +8,14 @@ if (!dir) fs.mkdirSync("uploads");
 const storage = multer.diskStorage({
   destination: "uploads",
   filename: (req, file, cb) => {
-    cb(null, uuid() + "." + file.mimetype.split("/")[1]);
+    cb(
+      null,
+      req.body.title.split(" ").join("_") +
+        "_" +
+        Date.now() +
+        "." +
+        file.mimetype.split("/")[1]
+    );
   },
 });
 

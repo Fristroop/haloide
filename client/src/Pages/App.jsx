@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { API } from "../config";
+import { API, CDN } from "../config";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Aos from "aos";
+import aos from "aos";
 
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
@@ -24,12 +24,15 @@ export const App = () => {
   const [modal, setModal] = useState({});
   const [data, setData] = useState(null);
   const [, setCategories] = useState(null);
-  const [magazines, setMagazines] = useState(null);
+  const [magazines, setMagazines] = useState([]);
 
   useEffect(() => {
-    Aos.init({
-      delay: 500,
+    aos.init({
+      useClassNames: true,
+      initClassName: false,
+      animatedClassName: "animate__animated",
     });
+
     const fetch = async () => {
       if (data) return;
       try {
@@ -74,6 +77,11 @@ export const App = () => {
     }
   }, [data, mId]);
 
+  const findIndex = (arr) => {
+    let index = arr.findIndex((v) => v.id === modal?.id);
+    return index;
+  };
+
   if (!data) return <Loader />;
 
   return (
@@ -82,14 +90,14 @@ export const App = () => {
       <Navbar />
       <SearchModal data={magazines} />
 
-      <main className="container">
+      <main className="container-fluid">
         <div className="banner my-5">
           <img
             src="https://images.hdqwalls.com/download/halloween-ghosts-ar-1920x1080.jpg"
             alt=""
             className="rounded"
           />
-          <div className="title" data-aos="fade-up" data-aos-delay="1000">
+          <div className="title" data-aos="animate__backInUp">
             <div className="text-center pb-2 fs-1">
               HALO: Aylık Fikir, Sanat ve Edebiyat Dergisi
             </div>
@@ -97,10 +105,10 @@ export const App = () => {
         </div>
 
         <div className="my-5"></div>
-        <div>
+        <div className="container">
           {data.map((e, i) => (
             <div className="my-5" key={i}>
-              <h3 data-aos="zoom-in">
+              <h3 data-aos="animate__bounceInRight">
                 {e.title}{" "}
                 <small className="text-muted">({e.magazines.length})</small>
               </h3>
@@ -111,9 +119,13 @@ export const App = () => {
                     <Link
                       className="btn card bg-transparent p-0 border-0"
                       to={`/?mId=${d.id}`}
-                      data-aos="fade-up"
+                      data-aos="animate__fadeInUp"
                     >
-                      <img src={d.banner} className="card-img" alt="..." />
+                      <img
+                        src={CDN + d.thumbnail}
+                        className="card-img"
+                        alt="..."
+                      />
                       <h6 className="p-2">{d.title}</h6>
                     </Link>
                   </div>
@@ -124,7 +136,12 @@ export const App = () => {
         </div>
       </main>
 
-      <MagazineModal show={showModal} modal={modal} />
+      <MagazineModal
+        show={showModal}
+        modal={modal}
+        prev={magazines[findIndex(magazines) - 1]}
+        next={magazines[findIndex(magazines) + 1]}
+      />
       <Footer />
     </>
   );

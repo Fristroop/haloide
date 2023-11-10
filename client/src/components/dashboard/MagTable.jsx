@@ -1,3 +1,5 @@
+import { CDN } from "../../config";
+
 /* eslint-disable react/prop-types */
 export const MagTable = ({ data, setDisplay }) => {
   return (
@@ -18,7 +20,7 @@ export const MagTable = ({ data, setDisplay }) => {
               <tr key={i}>
                 <td>{(i += 1)}</td>
                 <td>
-                  <img src={m.banner} height={"30px"} alt="" />
+                  <img src={CDN + m.thumbnail} height={"30px"} alt="" />
                 </td>
                 <td>{m.title}</td>
                 <td>{m.catId.substr(0, 10) + "..."}</td>

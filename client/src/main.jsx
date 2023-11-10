@@ -13,6 +13,7 @@ import { Dashboard } from "./Pages/Dashboard";
 
 import "bootstrap";
 import "./assets/bootstrap.scss";
+import "animate.css";
 import "aos/dist/aos.css";
 
 document.body.setAttribute(

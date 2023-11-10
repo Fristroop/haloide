@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { API } from "../../config";
+import { API, CDN } from "../../config";
 import { useState } from "react";
 
 export const MagModal = ({ display, setDisplay, data }) => {
@@ -27,16 +27,22 @@ export const MagModal = ({ display, setDisplay, data }) => {
 
     setLoading(true);
 
-    const res = await axios[mag ? "put" : "post"](
-      API + `/magazines/${mag?.id || ""}`,
-      data,
-      {
-        withCredentials: true,
-      }
-    );
+    try {
+      const res = await axios[mag ? "put" : "post"](
+        API + `/magazines/${mag?.id || ""}`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+      location.reload();
+    } catch (error) {
+      alert("an error occured");
+      console.error(error);
+    }
+
     setLoading(false);
-    console.log(res);
-    location.reload();
   };
 
   const convertURL = (str) => {
@@ -47,7 +53,11 @@ export const MagModal = ({ display, setDisplay, data }) => {
   const banner = mag ? (
     <>
       <br />
-      <a href={convertURL(mag?.banner)} target="_blank" rel="noreferrer">
+      <a
+        href={convertURL(CDN + mag?.thumbnail)}
+        target="_blank"
+        rel="noreferrer"
+      >
         Kapak fotoğrafını yeni sekmede göster.
       </a>
     </>
@@ -56,7 +66,7 @@ export const MagModal = ({ display, setDisplay, data }) => {
   const file = mag ? (
     <>
       <br />
-      <a href={convertURL(mag?.file)} target="_blank" rel="noreferrer">
+      <a href={convertURL(CDN + mag?.file)} target="_blank" rel="noreferrer">
         Dergiyi yeni sekmede göster.
       </a>
     </>

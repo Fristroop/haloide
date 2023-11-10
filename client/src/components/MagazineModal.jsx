@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { CDN } from "../config";
 
-export const MagazineModal = ({ show, modal }) => {
+export const MagazineModal = ({ show, modal, prev = {}, next = {} }) => {
+  useEffect(() => {});
   return (
     <div
       className={`modal fade ${show ? "show" : ""}`}
@@ -16,9 +19,9 @@ export const MagazineModal = ({ show, modal }) => {
             <div className="d-flex align-items-center gap-3">
               <button
                 className="btn btn-outline-primary d-flex align-items-center"
-                onClick={() =>
-                  navigator.clipboard.writeText(location.href) &&
-                  alert("Copied share link!")
+                onClick={async () =>
+                  alert("Copied share link!") &&
+                  (await navigator.clipboard.writeText(location.href))
                 }
               >
                 <i className="fa-solid fa-share-from-square fs-5 me-2"></i>
@@ -29,7 +32,11 @@ export const MagazineModal = ({ show, modal }) => {
           </div>
           <div className="modal-body">
             <div className="mb-3">
-              <img src={modal.banner} className="w-100 rounded" alt="" />
+              <img
+                src={CDN + modal.thumbnail}
+                className="w-100 rounded"
+                alt=""
+              />
             </div>
             <div>
               <p className="normal" style={{ whiteSpace: "break-spaces" }}>
@@ -40,7 +47,7 @@ export const MagazineModal = ({ show, modal }) => {
           <div className="modal-footer">
             <div className="justify-content-between mb-3"></div>
             <a
-              href={modal.file}
+              href={CDN + modal.file}
               target="_blank"
               rel="noreferrer"
               className="btn btn-success w-100"
@@ -52,6 +59,30 @@ export const MagazineModal = ({ show, modal }) => {
               Butona bastığınızda yeni bir sayfaya yönlendireleceksiniz ve
               indirme otomatik olarak başlayacak.
             </p>
+
+            <div className="indicators">
+              <a
+                href={`/?mId=${prev.id}`}
+                className={`btn right ${prev.id ? "" : "disabled  border-0"}`}
+              >
+                {prev.id ? (
+                  <>
+                    <i className="fa-solid fa-angle-left me-2"></i>
+                    {prev.title}
+                  </>
+                ) : (
+                  <>{prev.title}</>
+                )}
+              </a>
+
+              <a
+                href={`/?mId=${next.id}`}
+                className={`btn left ${next.id ? "" : "disabled  border-0"}`}
+              >
+                {next.title || "Çok Yakında..."}
+                <i className="fa-solid fa-angle-right ms-2"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>

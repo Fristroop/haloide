@@ -3,6 +3,13 @@
 @import "bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+[data-aos] {
+  visibility: hidden;
+}
+[data-aos].animate__animated {
+  visibility: visible;
+}
+
 [data-bs-theme="dark"] {
   --bs-body-bg: #121212;
 }

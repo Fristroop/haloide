@@ -1,10 +1,13 @@
 import express from "express";
 import { v4 } from "uuid";
+import fs from "fs";
 
 import { catModel, magazineModel } from "../helpers/mongoose.js";
 import { isAdmin } from "../helpers/passport.js";
+
+// Storage
 import { storage } from "../index.js";
-import fs from "fs";
+import { DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const router = express.Router();
 export const MagazineRouter = router;
@@ -24,10 +27,25 @@ router.post("/", isAdmin, async (req, res) => {
   const { title, description, catId } = req.body;
   const banner = req.files.find((f) => f.fieldname === "banner");
   const pdf = req.files.find((f) => f.fieldname === "file");
-  if (!banner || !pdf) return res.sendStatus(400);
+  if (!banner || !pdf)
+    return res.status(400).send({ message: "Missing Files" });
 
-  const g_banner = await storage.bucket("halodergisi").upload(banner.path);
-  const g_pdf = await storage.bucket("halodergisi").upload(pdf.path);
+  const g_banner = new PutObjectCommand({
+    Bucket: "fristroop",
+    Body: banner.path,
+    Key: `halodergisi/thumbnails/${banner.filename}`,
+  });
+
+  const g_pdf = new PutObjectCommand({
+    Bucket: "fristroop",
+    Body: pdf.path,
+    Key: `halodergisi/dergiler/${pdf.filename}`,
+  });
+
+  let rep = await storage.send(g_banner);
+  console.log(rep);
+  rep = await storage.send(g_pdf);
+  console.log(rep);
 
   const model = await magazineModel.create({
     id: v4(),
@@ -35,8 +53,8 @@ router.post("/", isAdmin, async (req, res) => {
     description,
     catId,
     timestamp: Date.now(),
-    banner: g_banner[0].metadata.mediaLink,
-    file: g_pdf[0].metadata.mediaLink,
+    thumbnail: g_banner.input.Key,
+    file: g_pdf.input.Key,
   });
 
   const cat = await catModel.findOne({ id: catId });
@@ -50,8 +68,25 @@ router.post("/", isAdmin, async (req, res) => {
 });
 
 router.delete("/:id", isAdmin, async (req, res) => {
-  const model = await magazineModel.deleteOne({ id: req.params.id });
+  const model = await magazineModel.findOne({ id: req.params.id });
+
   if (!model) res.sendStatus(400);
+
+  const thumbnail = new DeleteObjectCommand({
+    Bucket: "fristroop",
+    Key: model.thumbnail,
+  });
+
+  const pdf = new DeleteObjectCommand({
+    Bucket: "fristroop",
+    Key: model.file,
+  });
+
+  await storage.send(thumbnail);
+  await storage.send(pdf);
+
+  await model.deleteOne();
+
   res.send(model);
 });
 
@@ -61,14 +96,27 @@ router.put("/:id", isAdmin, async (req, res) => {
 
   const banner = req.files.find((f) => f.fieldname === "banner");
   if (banner) {
-    const g_banner = await storage.bucket("halodergisi").upload(banner.path);
-    data.banner = g_banner[0].metadata.mediaLink;
+    const g_banner = new PutObjectCommand({
+      Bucket: "fristroop",
+      Body: banner.path,
+      Key: `halodergisi/thumbnails/${banner.filename}`,
+    });
+
+    await storage.send(g_banner);
+    data.thumbnail = g_banner.input.Key;
     fs.unlinkSync(banner.path);
   }
   const pdf = req.files.find((f) => f.fieldname === "file");
   if (pdf) {
-    const g_pdf = await storage.bucket("halodergisi").upload(pdf.path);
-    data.file = g_pdf[0].metadata.mediaLink;
+    const g_pdf = new PutObjectCommand({
+      Bucket: "fristroop",
+      Body: pdf.path,
+      Key: `halodergisi/dergiler/${pdf.filename}`,
+    });
+    await storage.send(g_pdf);
+
+    data.file = g_pdf.input.Key;
+
     fs.unlinkSync(pdf.path);
   }
 
