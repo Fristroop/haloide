@@ -11,7 +11,10 @@ export const Navbar = () => {
     if (navbar) document.body.style.paddingTop = `${navbar.offsetHeight}px`;
   }, []);
 
-  const logo = localStorage.getItem("theme") === "dark" ? darkLogo : lightLogo;
+  const logo =
+    document.body.getAttribute("data-bs-theme") === "dark"
+      ? darkLogo
+      : lightLogo;
   return (
     <>
       <nav id="navbar" className="navbar navbar-expand-md border-bottom p-0">

@@ -2,7 +2,10 @@ import darkLogo from "../assets/imgs/halo-dark.png";
 import lightLogo from "../assets/imgs/halo-light.png";
 
 export const Footer = () => {
-  const logo = localStorage.getItem("theme") === "dark" ? darkLogo : lightLogo;
+  const logo =
+    document.body.getAttribute("data-bs-theme") === "dark"
+      ? darkLogo
+      : lightLogo;
 
   return (
     <>
