@@ -108,10 +108,13 @@ export const App = () => {
         <div className="container">
           {data.map((e, i) => (
             <div className="my-5" key={i}>
-              <h3 data-aos="animate__bounceInRight">
-                {e.title}{" "}
-                <small className="text-muted">({e.magazines.length})</small>
-              </h3>
+              <div data-aos="animate__bounceInRight">
+                <h3>
+                  {e.title}{" "}
+                  <small className="text-muted">({e.magazines.length})</small>
+                </h3>
+              </div>
+
               <hr className="border-3" />
               <div className="magazines d-flex gap-3">
                 {e.magazines.map((d, i) => (
