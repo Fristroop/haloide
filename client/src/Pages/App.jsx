@@ -4,7 +4,6 @@ import { API, CDN } from "../config";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import aos from "aos";
 
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
@@ -27,12 +26,6 @@ export const App = () => {
   const [magazines, setMagazines] = useState([]);
 
   useEffect(() => {
-    aos.init({
-      useClassNames: true,
-      initClassName: false,
-      animatedClassName: "animate__animated",
-    });
-
     const fetch = async () => {
       if (data) return;
       try {
@@ -97,7 +90,7 @@ export const App = () => {
             alt=""
             className="rounded"
           />
-          <div className="title" data-aos="animate__backInUp">
+          <div className="title" data-aos="fade-up">
             <div className="text-center pb-2 fs-1">
               HALO: Aylık Fikir, Sanat ve Edebiyat Dergisi
             </div>
@@ -108,7 +101,7 @@ export const App = () => {
         <div className="container">
           {data.map((e, i) => (
             <div className="my-5" key={i}>
-              <div data-aos="animate__bounceInRight">
+              <div data-aos="zoom-up">
                 <h3>
                   {e.title}{" "}
                   <small className="text-muted">({e.magazines.length})</small>

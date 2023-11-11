@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CDN } from "../config";
 
 export const MagazineModal = ({ show, modal, prev = {}, next = {} }) => {
-  useEffect(() => {});
+  if (!modal.id) return;
   return (
     <div
       className={`modal fade ${show ? "show" : ""}`}
