@@ -12,10 +12,15 @@ body {
   overflow-x: hidden;
 }
 
+.ig {
+  font-family: "Lobster";
+}
+
 .navbar {
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
   z-index: 1;
   backdrop-filter: blur(10px);
 }
@@ -27,8 +32,4 @@ body {
 
 .navbar-toggler:focus {
   box-shadow: none;
-}
-
-.ig {
-  font-family: "Lobster";
 }

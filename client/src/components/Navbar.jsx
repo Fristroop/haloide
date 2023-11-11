@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import darkLogo from "../assets/imgs/halo-dark.png";
 import lightLogo from "../assets/imgs/halo-light.png";
+
+import "../assets/styles/Navbar.css";
 
 export const Navbar = () => {
   const searchVisible = location.pathname == "/";
@@ -15,6 +17,7 @@ export const Navbar = () => {
     document.body.getAttribute("data-bs-theme") === "dark"
       ? darkLogo
       : lightLogo;
+
   return (
     <>
       <nav id="navbar" className="navbar navbar-expand-md border-bottom p-0">

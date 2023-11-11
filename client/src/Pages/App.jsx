@@ -83,8 +83,8 @@ export const App = () => {
       <Navbar />
       <SearchModal data={magazines} />
 
-      <main className="container-fluid">
-        <div className="banner my-5">
+      <main>
+        <div className="container banner">
           <img
             src="https://images.hdqwalls.com/download/halloween-ghosts-ar-1920x1080.jpg"
             alt=""

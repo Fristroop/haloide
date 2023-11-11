@@ -1,0 +1,17 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-toggler {
+  border: none;
+  color: var(--bs-navbar-brand-color);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
