@@ -1,6 +1,6 @@
 <img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Xiao" src="https://fristroop.com/assets/logo-7d84cf41.png">
 
-# [FT-Chat](https://haloide.fristroop.com)
+# [Haloide Magazine](https://haloide.fristroop.com)
 
 💬 A Magazine application built with React & Bootstrap & Express & MongoDB!.
 
