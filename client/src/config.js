@@ -1,5 +1,5 @@
 export const API = import.meta.env.PROD
-  ? "https://api-halo.fristroop.com"
+  ? process.env.VITE_API
   : "http://localhost:3000";
 
 export const CDN = "https://cdn.fristroop.com/";
